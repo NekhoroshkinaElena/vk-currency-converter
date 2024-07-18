@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:id="@+id/spCurrencyInput"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/spCurrencyOutput"/>
+
+    <Spinner
+        android:id="@+id/spCurrencyOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spCurrencyInput"
+        app:layout_constraintEnd_toEndOf="@id/spCurrencyInput"
+        />
+
+    <EditText
+        android:id="@+id/etCurrencyInput"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/grey"
+        android:gravity="end|center"
+        android:inputType="numberDecimal"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/spCurrencyInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/spCurrencyInput"
+        tools:text="125.3" />
+
+    <TextView
+        android:id="@+id/tvCurrencyOutput"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/grey"
+        android:gravity="end|center"
+        android:padding="16dp"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/spCurrencyOutput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/spCurrencyOutput"
+        tools:text="125.3" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btConvert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/shape_button_converter"
+        android:enabled="false"
+        android:textColor="@color/white"
+        android:text="@string/convert"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/tvCurrencyOutput" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
