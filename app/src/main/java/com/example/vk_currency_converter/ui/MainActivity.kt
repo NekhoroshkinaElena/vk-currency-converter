@@ -12,7 +12,6 @@ import androidx.core.widget.doOnTextChanged
 import com.example.vk_currency_converter.databinding.ActivityMainBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class MainActivity : AppCompatActivity() {
 
     private val viewModel by viewModel<MainViewModel>()
@@ -81,9 +80,7 @@ class MainActivity : AppCompatActivity() {
                 inputCurrency = p0?.selectedItem.toString()
             }
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-
-            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
 
         spinnerOutput?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -91,13 +88,11 @@ class MainActivity : AppCompatActivity() {
                 outputCurrency = p0?.selectedItem.toString()
             }
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-
-            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
 
         binding.btConvert.setOnClickListener {
-            viewModel.converter(inputCurrency, outputCurrency, inputValue.toBigDecimal())
+            viewModel.converter(inputCurrency, outputCurrency, inputValue)
         }
 
         binding.etCurrencyInput.doOnTextChanged { text, _, _, _ ->
