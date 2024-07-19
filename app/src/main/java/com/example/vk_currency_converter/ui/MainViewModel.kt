@@ -25,13 +25,17 @@ class MainViewModel(private val currencyInteractor: CurrencyInteractor) : ViewMo
         getExchangeRates()
     }
 
-    fun converter(currencyFrom: String?, currencyTo: String?, amount: BigDecimal) {
+    fun converter(currencyFrom: String?, currencyTo: String?, amount: String) {
         updateExchangeRates()
         val valueCurrencyFrom: BigDecimal? = exchangeRates?.get(currencyFrom)
         val valueCurrencyTo: BigDecimal? = exchangeRates?.get(currencyTo)
+
         if (valueCurrencyFrom != null && valueCurrencyTo != null) {
             val res =
-                (valueCurrencyTo * amount / valueCurrencyFrom).setScale(2, RoundingMode.CEILING)
+                (valueCurrencyTo * amount.toBigDecimal().setScale(2) / valueCurrencyFrom).setScale(
+                    2,
+                    RoundingMode.CEILING
+                )
             _convertedValue.postValue(res.toString())
         } else {
             _converterState.postValue(ConverterState.ErrorServer)
