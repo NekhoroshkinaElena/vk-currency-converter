@@ -18,13 +18,11 @@ class RetrofitNetworkClient(
         if (!isInternetAvailable(context)) {
             return Response().apply { resultCode = RESULT_CODE_NO_INTERNET }
         }
-
         try {
             val response =
                 exchangerRateService.getExchangeRates().apply { resultCode = RESULT_CODE_SUCCESS }
             return response
         } catch (e: HttpException) {
-            println("RetrofitClient error code: ${e.code()} message: ${e.message}")
             return Response().apply { resultCode = RESULT_CODE_SERVER_ERROR }
         }
     }

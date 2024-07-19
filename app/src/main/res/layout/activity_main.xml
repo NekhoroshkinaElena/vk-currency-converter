@@ -3,41 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary">
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/converterGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:constraint_referenced_ids="btConvert, spCurrencyInput, spCurrencyOutput,
+         tvCurrencyOutput, etCurrencyInput" />
 
     <Spinner
         android:id="@+id/spCurrencyInput"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
         android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="@id/spCurrencyOutput"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/spCurrencyOutput"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spCurrencyOutput"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:spinnerMode="dialog"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spCurrencyInput"
         app:layout_constraintEnd_toEndOf="@id/spCurrencyInput"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spCurrencyInput" />
 
     <EditText
         android:id="@+id/etCurrencyInput"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginStart="16dp"
-        android:background="@color/grey"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_edittext_input"
         android:gravity="end|center"
         android:inputType="numberDecimal"
         android:padding="16dp"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorOnPrimary"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="@+id/spCurrencyInput"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,16 +55,17 @@
     <TextView
         android:id="@+id/tvCurrencyOutput"
         android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:background="@color/grey"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_currency_output"
         android:gravity="end|center"
         android:padding="16dp"
-        android:textSize="22sp"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/spCurrencyOutput"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/spCurrencyOutput"
+        app:layout_constraintTop_toTopOf="@+id/spCurrencyOutput"
         tools:text="125.3" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -67,10 +76,44 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/shape_button_converter"
         android:enabled="false"
-        android:textColor="@color/white"
         android:text="@string/convert"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/tvCurrencyOutput" />
 
+    <TextView
+        android:id="@+id/tvErrorMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="center"
+        android:text="@string/no_internet_error"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/shape_button_converter"
+        android:clickable="true"
+        android:text="@string/update"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pbProgressBar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:indeterminateTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
