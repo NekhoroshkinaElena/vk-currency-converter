@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">vk-currency-converter</string>
     <string name="convert">Сконвертировать</string>
+    <string name="update">Обновить</string>
+    <string name="no_internet_error">Отсутствует подключение к интернету</string>
+    <string name="server_error">Ошибка сервера, попробуйте повторить попытку позже</string>
 </resources>

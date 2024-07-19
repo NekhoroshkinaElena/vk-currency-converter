@@ -1,6 +1,8 @@
 package com.example.vk_currency_converter.domain.model
 
-data class ExchangeRates(val rates: HashMap<String, Double>?, val error: ExchangeRatesError?) {
+import java.math.BigDecimal
+
+data class ExchangeRates(val rates: HashMap<String, BigDecimal>?, val error: ExchangeRatesError?) {
 
     enum class ExchangeRatesError {
         NO_INTERNET,
